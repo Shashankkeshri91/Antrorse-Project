@@ -1,34 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="index.css" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <title>Project 1</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Project-1</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" /> -->
 </head>
 
-<body id="container">
+<body>
+<div>
+  <p>Enter Your Initial Value</p>
 
-    <h1>Arithmetic Operation</h1>
-    <label for="num1">Number1:</label>
-    <input type="number" id="num1" />
-    <br />
-    <label for="num2">Number2:</label>
-    <input type="number" id="num2" />
-    <br />
-    <div class="btn">
-        <button onclick="add()">+</button>
-        <button onclick="substract()">-</button>
-        <button onclick="multiply()">x</button>
-        <button onclick="divide()">/</button>
-        <button onclick="modulo()">%</button>
-    </div>
+  <input id="userInput" placeholder="Enter Your Initial Value">
+  <br>
+  <br>
+  <!--Button + on one click  -->
+    <button onclick="myFuncOperation('+2')">onClick +2</button>
+  <!--Button - on double clicl -->
+    <button ondblclick="myFuncOperation('-2')">doubleClick -2</button>
+  <!--Button x on mouseover -->
+    <button onmouseenter="myFuncOperation('*2')">mouseOver x2</button>
+  <!--Button / on mouse enter  -->
+    <button onmouseover="myFuncOperation('/2')">mouseEnter /2</button>
+  <!--Button % on mouselLeave  -->
+    <button onmouseleave="myFuncOperation('%2')">mouseLeave %2</button>
 
-    <p id="result">Result: </p>
+  <div id="result">Result:0</div>
+  </div>
 
-    <script src="index.js"></script>
+
+
+
+
+  
+  <script src="script.js"></script>
+  
+  <script src="https://replit.com/public/js/replit-badge-v2.js" theme="dark" position="bottom-right"></script>
 </body>
 
 </html>
