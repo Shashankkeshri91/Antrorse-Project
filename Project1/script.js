@@ -26,6 +26,6 @@ function myFuncOperation(op){
     console.log('Result:', res);
   
     // Display the result in the result box
-    document.getElementById('result').textContent = 'Result: ' + res;
+    document.getElementById('result').innerText = 'Result: ' + res;
   
   }
