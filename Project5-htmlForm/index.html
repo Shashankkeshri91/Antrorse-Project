@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <h1>Validation Form</h1>
-        <form id="validationForm">
+        <form id="validationForm" enctype="multipart/form-data">
             <div class="input-field">
                 <label for="username">Username</label>
                 <input type="text" id="username" placeholder="Enter username">
@@ -31,12 +31,19 @@
                 <label for="confirmPassword">Confirm Password</label>
                 <input type="password" id="confirmPassword" placeholder="Confirm password">
             </div>
+            <div class="input-field">
+                <label for="file">Upload PDF</label>
+                <input type="file" id="file" accept=".pdf">
+            </div>
             <div>
                 <input type="submit" id="submit" value="Submit">
             </div>
+            <div class="history-section">
+                <h2>Form Submission History</h2>
+                <ul id="submissionHistory"></ul>
+             </div>
         </form>
     </div>
-
     <script src="index.js"></script>
 </body>
 </html>

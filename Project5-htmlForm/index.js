@@ -1,53 +1,60 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('form');
+    const form = document.getElementById('validationForm');
+    const submissionHistory = document.getElementById('submissionHistory');
 
     form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent the form from submitting
+        event.preventDefault();
 
-        // Validate each input field
-        const username = document.getElementById('username');
-        const email = document.getElementById('email');
-        const mobNo = document.getElementById('mobNo');
-        const password = document.getElementById('password');
-        const confirmPassword = document.getElementById('confirmPassword');
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const mobNo = document.getElementById('mobNo').value;
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirmPassword').value;
 
-        if (validateInput(username.value)) {
-            applyValidationStyle(username, true);
-        } else {
-            applyValidationStyle(username, false);
-        }
+        const fileInput = document.getElementById('file');
+        const selectedFile = fileInput.files[0];
 
-        if (validateInput(email.value)) {
-            applyValidationStyle(email, true);
-        } else {
-            applyValidationStyle(email, false);
-        }
+        // Validate all input fields
+        const isValidUsername = validateInput(username);
+        const isValidEmail = validateEmail(email);
+        const isValidMobNo = validateMobNo(mobNo);
+        const isValidPassword = validateInput(password);
+        const isValidConfirmPassword = password === confirmPassword && password !== '';
+        const isValidFile = selectedFile && selectedFile.type === 'application/pdf';
 
-        if (validateInput(mobNo.value)) {
-            applyValidationStyle(mobNo, true);
-        } else {
-            applyValidationStyle(mobNo, false);
-        }
+        // Apply validation styles
+        applyValidationStyle(document.getElementById('username'), isValidUsername);
+        applyValidationStyle(document.getElementById('email'), isValidEmail);
+        applyValidationStyle(document.getElementById('mobNo'), isValidMobNo);
+        applyValidationStyle(document.getElementById('password'), isValidPassword);
+        applyValidationStyle(document.getElementById('confirmPassword'), isValidConfirmPassword);
+        applyValidationStyle(fileInput, isValidFile);
 
-        if (validateInput(password.value)) {
-            applyValidationStyle(password, true);
-        } else {
-            applyValidationStyle(password, false);
-        }
+        if (isValidUsername && isValidEmail && isValidMobNo && isValidPassword && isValidConfirmPassword && isValidFile) {
+            const listItem = document.createElement('li');
+            listItem.textContent = `Username: ${username}, Email: ${email}, Mob No.: ${mobNo}, PDF File: ${selectedFile.name}`;
+            submissionHistory.appendChild(listItem);
 
-        if (password.value === confirmPassword.value && password.value !== '') {
-            applyValidationStyle(confirmPassword, true);
-        } else {
-            applyValidationStyle(confirmPassword, false);
+            form.reset();
+            applyValidationStyle(fileInput, true);
         }
     });
 
     function validateInput(value) {
-        return value.trim() !== ''; // Basic validation: Check if the input is not empty
+        return value.trim() !== '';
+    }
+
+    function validateEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    function validateMobNo(mobNo) {
+        const mobNoRegex = /^\d{10}$/;
+        return mobNoRegex.test(mobNo);
     }
 
     function applyValidationStyle(element, isValid) {
-        // Apply styles based on validation result
         if (isValid) {
             element.style.borderColor = 'green';
         } else {

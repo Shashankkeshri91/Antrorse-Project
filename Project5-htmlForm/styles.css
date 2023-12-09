@@ -1,17 +1,15 @@
 /* Reset some default styles */
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Apply a background color to the body */
 body {
     background-color: #f4f4f4;
     font-family: Arial, sans-serif;
 }
 
-/* Center the form in the middle of the page */
 .container {
     max-width: 400px;
     margin: 50px auto;
@@ -21,13 +19,11 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Style the form heading */
 h1 {
     text-align: center;
     margin-bottom: 20px;
 }
 
-/* Style the input fields and labels */
 .input-field {
     margin-bottom: 15px;
 }
@@ -45,7 +41,6 @@ input {
     border-radius: 4px;
 }
 
-/* Style the submit button */
 #submit {
     background-color: #4caf50;
     color: #fff;
@@ -56,7 +51,20 @@ input {
     width: 100%;
 }
 
-/* Add some spacing between the form and the footer */
 form {
     margin-bottom: 20px;
 }
+
+.history-section {
+    margin-top: 20px;
+ }
+ 
+ #submissionHistory {
+    list-style-type: none;
+    padding: 0;
+ }
+ 
+ #submissionHistory li {
+    margin-bottom: 10px;
+ }
+ 
